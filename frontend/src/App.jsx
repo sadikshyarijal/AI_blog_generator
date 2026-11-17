@@ -55,7 +55,7 @@ function App() {
     setResearch([]);
 
     try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL || "http://127.0.0.1:8000"}/generate-blog`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL?.replace(/\/+$/, "") || "http://127.0.0.1:8000"}/generate-blog`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
