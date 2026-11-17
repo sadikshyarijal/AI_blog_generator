@@ -1,0 +1,34 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --butter-yellow: #F6E7A6;
+  --orchid-pink: #DA91C5;
+  --dusty-rose: #C9858D;
+  --pink-lace: #FCE7F0;
+  --apricot: #F6B58B;
+
+  --text-dark: #49343F;
+  --text-muted: #8A707D;
+  --white: #FFFFFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--pink-lace);
+  color: var(--text-dark);
+}
+
+button, textarea {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
