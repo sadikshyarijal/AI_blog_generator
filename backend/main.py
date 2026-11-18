@@ -1,6 +1,7 @@
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from typing import Literal
 from pydantic import BaseModel, Field
 
 from agents.blog_workflow import generate_blog
@@ -28,9 +29,26 @@ app.add_middleware(
 
 
 # Define the data we expect from the frontend
+from typing import Literal
+
 class BlogRequest(BaseModel):
     topic: str = Field(min_length=3, max_length=200)
 
+    length: Literal["Short", "Medium", "Long"] = "Medium"
+
+    style: Literal[
+        "Professional",
+        "Casual",
+        "Friendly",
+        "Academic",
+        "SEO-optimized"
+    ] = "Professional"
+
+    language: Literal[
+        "English",
+        "Nepali",
+        "Hindi"
+    ] = "English"
 
 # A simple endpoint to check whether the backend is running
 @app.get("/")
@@ -45,7 +63,12 @@ def home():
 def create_blog(request: BlogRequest):
 
     try:
-        result = generate_blog(request.topic)
+        result = generate_blog(
+    topic=request.topic,
+    length=request.length,
+    style=request.style,
+    language=request.language
+)
 
         return {
             "success": True,

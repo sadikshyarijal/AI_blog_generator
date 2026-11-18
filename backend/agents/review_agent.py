@@ -2,7 +2,14 @@
 from services.ai_service import generate_response
 
 
-def review_blog(topic, blog_draft, research_data):
+def review_blog(
+    topic,
+    blog_draft,
+    research_data,
+    length="Medium",
+    style="Professional",
+    language="English"
+):
 
     print("Review Agent is working...")
 
@@ -10,7 +17,8 @@ def review_blog(topic, blog_draft, research_data):
     source_urls = []
 
     for item in research_data:
-        source_urls.append(item["url"])
+        if item.get("url"):
+            source_urls.append(item["url"])
 
     sources = "\n".join(source_urls)
 
@@ -28,16 +36,44 @@ def review_blog(topic, blog_draft, research_data):
     AVAILABLE RESEARCH SOURCES:
     {sources}
 
-    YOUR TASKS:
-    1. Correct grammar and spelling mistakes.
-    2. Improve sentence clarity and readability.
-    3. Improve the flow between paragraphs.
-    4. Check that headings are well organized.
-    5. Remove unnecessary repetition.
-    6. Check that factual claims are supported by
+    ARTICLE REQUIREMENTS:
+
+    1. ARTICLE LENGTH:
+       Check whether the article follows the requested length:
+       - Short: approximately 500–700 words.
+       - Medium: approximately 1000–1300 words.
+       - Long: approximately 1800–2200 words.
+
+       Selected length: {length}
+
+    2. WRITING STYLE:
+       Ensure the article consistently follows this style:
+       {style}
+
+    3. LANGUAGE:
+       Ensure the entire article is written in:
+       {language}
+
+       Correct language inconsistencies and grammatical errors.
+
+    YOUR REVIEW TASKS:
+
+    4. Correct grammar and spelling mistakes.
+    5. Improve sentence clarity and readability.
+    6. Improve the flow between paragraphs.
+    7. Check that headings are well organized.
+    8. Remove unnecessary repetition.
+    9. Check that factual claims are supported by
        the supplied research.
-    7. Do not invent facts, statistics, or references.
-    8. Preserve the original meaning and important details.
+    10. Do not invent facts, statistics, or references.
+    11. Preserve the original meaning and important details.
+
+    CITATION PRESERVATION:
+
+    12. Preserve all existing inline citation numbers exactly.
+    13. Do not remove, renumber, or invent citations.
+    14. Keep the References section and supplied source URLs.
+    15. Do not introduce unsupported references.
 
     Return the complete improved blog article in Markdown.
     """

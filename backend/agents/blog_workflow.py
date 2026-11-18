@@ -5,25 +5,47 @@ from agents.writing_agent import write_blog
 from agents.review_agent import review_blog
 
 
-def generate_blog(topic):
-
+def generate_blog(
+    topic,
+    length="Medium",
+    style="Professional",
+    language="English"
+):
     print("\n========== STARTING BLOG GENERATION ==========\n")
 
-    # 1. Planning
+    
     print("STEP 1: Creating blog plan...")
-    blog_plan = create_blog_plan(topic)
+    blog_plan = create_blog_plan(
+        topic, length, style, language
+    )
 
-    # 2. Research
+    
     print("\nSTEP 2: Researching the topic...")
-    research_data = conduct_research(topic, blog_plan)
+    research_data = conduct_research(
+        topic, blog_plan, language
+    )
 
-    # 3. Writing
+   
     print("\nSTEP 3: Writing the blog...")
-    blog_draft = write_blog(topic, blog_plan, research_data)
+    blog_draft = write_blog(
+        topic,
+        blog_plan,
+        research_data,
+        length,
+        style,
+        language
+    )
 
-    # 4. Reviewing
+  
     print("\nSTEP 4: Reviewing the blog...")
-    final_blog = review_blog(topic, blog_draft, research_data)
+    final_blog = review_blog(
+        topic,
+        blog_draft,
+        research_data,
+        length,
+        style,
+        language
+    )
 
     print("\n========== BLOG GENERATION COMPLETED ==========\n")
 
@@ -33,3 +55,4 @@ def generate_blog(topic):
         "research": research_data,
         "blog": final_blog
     }
+

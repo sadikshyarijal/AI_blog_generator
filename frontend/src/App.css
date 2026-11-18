@@ -544,3 +544,109 @@ html {
   font-size: 13px;
   line-height: 1.6;
 }
+
+.preferences {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.preference-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.preference-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.preference-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--dusty-rose);
+  border-radius: 10px;
+  background: white;
+  color: var(--text-dark);
+  font-size: 14px;
+  outline: none;
+}
+
+.preference-group select:focus {
+  border-color: var(--orchid-pink);
+}
+
+@media (max-width: 650px) {
+  .preferences {
+    grid-template-columns: 1fr;
+  }
+}
+
+.result-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.result-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.result-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 16px;
+  border: 1px solid var(--dusty-rose);
+  border-radius: 9px;
+  background: white;
+  color: var(--text-dark);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.action-button:hover {
+  background: var(--pink-lace);
+  border-color: var(--orchid-pink);
+}
+
+.download-button {
+  background: var(--orchid-pink);
+  border-color: var(--orchid-pink);
+  color: white;
+}
+
+.download-button:hover {
+  background: var(--dusty-rose);
+  color: white;
+}
+
+@media (max-width: 500px) {
+  .result-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .result-actions {
+    width: 100%;
+  }
+
+  .action-button {
+    flex: 1;
+  }
+}
